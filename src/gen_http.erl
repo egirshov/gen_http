@@ -314,8 +314,7 @@ connect_to_ip({I1,I2,I3,I4}, Port, Timeout) ->
       receive
         {http, Socket, connected} -> {ok, Socket};
         {http_error, Socket, Error} -> close(Socket), {error, Error};
-        {http_closed, Socket} -> {error, closed};
-        Else -> ?D(Else)
+        {http_closed, Socket} -> {error, closed}
       after
         Timeout -> close(Socket), {error, timeout}
       end;
